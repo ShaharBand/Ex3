@@ -26,7 +26,9 @@ def random_graph_creator(amount_of_nodes=10) -> (DiGraph, int):
 
 
 class TestDiGraph(unittest.TestCase):
-
+    """
+    This class is responsible to test the functions in the DiGraph class
+    """
     def test_v_size(self):
         v_size = random.randrange(10, 20)
 

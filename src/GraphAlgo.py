@@ -82,9 +82,12 @@ class GraphAlgo(GraphAlgoInterface):
         for i in self.get_graph().get_all_v():
             id = i
             pos = self.get_graph().get_node(i).get_location()
-            pos_str = str(pos.get_x()) + ',' + str(pos.get_y()) + "," + str(pos.get_z())
 
-            nodes.append({"pos": pos_str, "id": id})
+            if pos.get_x() is not None:
+                pos_str = str(pos.get_x()) + ',' + str(pos.get_y()) + "," + str(pos.get_z())
+                nodes.append({"pos": pos_str, "id": id})
+
+            nodes.append({"id": id})
 
         edges = []
         for i in self.get_graph().get_all_v():
