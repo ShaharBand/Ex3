@@ -181,6 +181,8 @@ class GraphAlgo(GraphAlgoInterface):
         Finds all the Strongly Connected Component(SCC) in the graph.
         @return: The list all SCC
         """
+        if self.__graph is None:
+            return []
         list_of_components = []
 
         for i in self.get_graph().get_all_v():

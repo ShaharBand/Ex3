@@ -82,10 +82,83 @@ class TestGraphAlgo(unittest.TestCase):
                                                                     "calculate shortest path.")
 
     def test_connected_component(self):
-        pass
+        ga = GraphAlgo()
+        self.assertEqual(ga.connected_component(0), [], "Failed (GraphAlgo: connected_component()), failed to "
+                                                        "calculate connected component function.")
+
+        v_size = random.randrange(10, 20)
+        g = random_graph_creator(v_size)[0]
+        g.add_node(21)
+        g.add_node(22)
+        g.add_node(23)
+
+        g.add_edge(21, 22, 1)
+        g.add_edge(22, 23, 1)
+        g.add_edge(22, 21, 1)
+        g.add_edge(23, 22, 1)
+        ga = GraphAlgo(g)
+
+        self.assertEqual(ga.connected_component(21), [21, 22, 23],
+                         "Failed (GraphAlgo: connected_component()), failed to "
+                         "calculate connected component function.")
+
+        ga.get_graph().remove_edge(22, 23)
+        self.assertEqual(ga.connected_component(21), [21, 22],
+                         "Failed (GraphAlgo: connected_component()), failed to "
+                         "calculate connected component function.")
+
+        ga.get_graph().remove_node(21)
+        self.assertEqual(ga.connected_component(21), [],
+                         "Failed (GraphAlgo: connected_component()), failed to "
+                         "calculate connected component function.")
+
+        self.assertEqual(ga.connected_component(22), [22],
+                         "Failed (GraphAlgo: connected_component()), failed to "
+                         "calculate connected component function.")
 
     def test_connected_components(self):
-        pass
+        ga = GraphAlgo()
+        self.assertEqual(ga.connected_components(), [], "Failed (GraphAlgo: connected_component()), failed to "
+                                                        "calculate connected components function.")
+        g = DiGraph()
+        g.add_node(0)
+        g.add_node(1)
+        g.add_node(2)
+        g.add_node(3)
+        g.add_edge(0, 1, 1)
+        g.add_edge(0, 2, 1)
+        g.add_edge(0, 3, 1)
+        g.add_edge(3, 0, 1)
+        g.add_edge(2, 0, 1)
+        g.add_edge(1, 0, 1)
+        ga = GraphAlgo(g)
+
+        self.assertEqual(ga.connected_components(), [[0, 1, 2, 3]],
+                         "Failed (GraphAlgo: connected_component()), failed to "
+                         "calculate connected components function.")
+
+        ga.get_graph().remove_node(1)
+        self.assertEqual(ga.connected_components(), [[0, 2, 3]], "Failed (GraphAlgo: connected_component()), failed to "
+                                                                 "calculate connected components function.")
+
+        ga.get_graph().remove_edge(2, 0)
+        self.assertEqual(ga.connected_components(), [[0, 3], [2]],
+                         "Failed (GraphAlgo: connected_component()), failed to "
+                         "calculate connected components function.")
 
     def test_plot_graph(self):
-        pass
+        try:
+            ga = GraphAlgo()
+            ga.plot_graph()
+
+        except:
+            self.fail("Failed (GraphAlgo: plot_graph()), failed to plot an empty graph.")
+
+        try:
+            v_size = random.randrange(10, 20)
+            g = random_graph_creator(v_size)[0]
+            ga = GraphAlgo(g)
+            ga.plot_graph()
+
+        except:
+            self.fail("Failed (GraphAlgo: plot_graph()), failed to plot graph.")
