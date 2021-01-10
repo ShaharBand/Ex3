@@ -30,14 +30,6 @@ class GeoLocation:
         """
         return self.__z
 
-    def distance(self, location) -> float:
-        """
-        This function is responsible to return the distance between a given coordinates and the associated location.
-        @:param location - given coordinates to measure the distance from.
-        @:return the distance between a given coordinate and the associated location.
-        """
-        return ((self.__x - location.get_x()) ** 2 + (self.__y - location.get_y()) ** 2 + (self.__z - location.get_z()) ** 2) ** 0.5
-
     def __str__(self):
         """
         This function is responsible to return the coordinates in a string format.

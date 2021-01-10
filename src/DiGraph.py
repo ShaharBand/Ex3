@@ -161,7 +161,7 @@ class DiGraph(GraphInterface):
         for i in list_of_edges:
             self.remove_edge(i.get_src(), i.get_dest())
 
-        self.__nodes.pop(node_id, None)
+        del self.__nodes[str(node_id)]
         self.__mc += 1
         return True
 
@@ -247,23 +247,3 @@ class DiGraph(GraphInterface):
 
     def __repr__(self):
         return str(self)
-
-
-"""g = DiGraph()
-g.add_node(1,(1,2,3))
-g.add_node(2,(1,2,3))
-g.add_node(3,(1,2,3))
-
-g.add_edge(2,1,1)
-g.add_edge(2,3,1)
-
-print(str(g.get_all_edges()))"""
-#print("test 1")
-#print(g.get_neighbors(2))
-
-#print("test 2")
-#print(g.get_edges(1))
-
-#print("test 3")
-#g.remove_node(1)
-#print(g.get_edges(2))

@@ -24,7 +24,42 @@ def random_graph_creator(amount_of_nodes=10) -> DiGraph:
 
 class TestDiGraph(unittest.TestCase):
 
-    def test_graph_creation(self):
+    def test_v_size(self):
         v_size = random.randrange(10, 20)
+
         g = random_graph_creator(v_size)
-        self.assertEqual(v_size, g.v_size(), "Failed! incorrect amount of nodes.")
+        self.assertEqual(v_size, g.v_size(), "Failed (DiGraph: v_size()), incorrect amount of nodes.")
+
+        v_size += 1
+        g.add_node(21)
+        self.assertEqual(v_size, g.v_size(), "Failed (DiGraph: v_size()), incorrect amount of nodes"
+                                                 " (after adding a node).")
+
+        g.add_node(21)
+        self.assertEqual(v_size, g.v_size(), "Failed (DiGraph: v_size()), incorrect amount of nodes"
+                                                 " (after adding an already existing node).")
+
+        v_size -= 1
+        g.remove_node(0)
+        self.assertEqual(v_size, g.v_size(), "Failed (DiGraph: v_size()), incorrect amount of nodes"
+                                             " (after removing a node).")
+
+        g.remove_node(0)
+        self.assertEqual(v_size, g.v_size(), "Failed (DiGraph: v_size()), incorrect amount of nodes"
+                                             " (after removing a node).")
+
+        g.add_edge(0, 1, 5)
+        self.assertEqual(v_size, g.v_size(), "Failed (DiGraph: v_size()), incorrect amount of nodes"
+                                             " (after adding an edge).")
+
+        g.add_edge(0, 1, 5)
+        self.assertEqual(v_size, g.v_size(), "Failed (DiGraph: v_size()), incorrect amount of nodes"
+                                             " (after adding an already existing edge).")
+
+        g.remove_edge(0, 1)
+        self.assertEqual(v_size, g.v_size(), "Failed (DiGraph: v_size()), incorrect amount of nodes"
+                                             " (after removing an edge).")
+
+        g.remove_edge(0, 1)
+        self.assertEqual(v_size, g.v_size(), "Failed (DiGraph: v_size()), incorrect amount of nodes"
+                                             " (after removing an non existing edge).")
