@@ -6,7 +6,7 @@ Ariel OOP course: Exersice 3 is about directed weighted graphs in python while c
 
 [![digraph-1.png](https://i.postimg.cc/h4ypYsg0/digraph-1.png)](https://postimg.cc/9z9dRGD4)
 
-### To clone this repository
+### To clone this repository:
 
 Write in your Git Bash the follow:
 
