@@ -186,9 +186,13 @@ class GraphAlgo(GraphAlgoInterface):
         list_of_components = []
 
         for i in self.get_graph().get_all_v():
-            component = self.connected_component(id1= int(i))
-            if component not in list_of_components:
-                list_of_components.append(component)
+            allowed = True
+            for j in list_of_components:
+                if int(i) in j:
+                    allowed = False
+
+            if allowed:
+                list_of_components.append(self.connected_component(id1= int(i)))
 
         return list_of_components
 
