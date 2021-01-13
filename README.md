@@ -10,10 +10,10 @@ Ariel OOP course: Exersice 3 is about directed weighted graphs in python while c
 
 Write in your Git Bash the follow:
 
-$ git clone https://github.com/ShaharBand/Ex3.git
+    $ git clone https://github.com/ShaharBand/Ex3.git
 
-> More information about the diffrent algorithms:
->
+### More information about the diffrent algorithms:
+
 > Dijkstra - https://en.wikipedia.org/wiki/Dijkstra%27s_algorithm
 >
 > Breadth-first search - https://en.wikipedia.org/wiki/Breadth-first_search
